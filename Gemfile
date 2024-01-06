@@ -84,3 +84,5 @@ group :test do
 end
 
 gem 'rubocop'
+
+gem "tailwindcss-rails", "~> 2.2"

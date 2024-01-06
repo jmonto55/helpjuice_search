@@ -3,12 +3,29 @@
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <table data-controller="search">
+    <thead>
+      <tr>
+        <th>
+          <input type="text" id="search" placeholder="Search..."
+            data-action="input->search#filterArticles"
+          />
+        </th>
+        <th>Title</th>
+        <th>Content</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td></td>
+          <td data-search-target="title"><%= article.title %></td>
+          <td data-search-target="content"><%= article.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 <%= link_to "New article", new_article_path %>

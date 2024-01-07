@@ -2,7 +2,7 @@
   <h1><b>JavaScript Articles</b></h1>
 </div>
 
-### This project is a real-time searcher for articles, showcasing analytics and applpying robust logic to summarize searches.
+### This project is a real-time searcher for articles, showcasing analytics and applying robust logic to summarize searches.
 
 ## Built With <a name="built-with"></a>
 

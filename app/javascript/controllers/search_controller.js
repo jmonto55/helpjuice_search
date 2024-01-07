@@ -14,7 +14,7 @@ export default class extends Controller {
 
     this.queryTimeout = setTimeout(() => {
       this.postNewQuery(event.target.value);
-    }, 2000);
+    }, 2500);
 
     this.titleTargets.forEach((title) => {
       const postTitle = title.textContent.toLowerCase();

@@ -10,18 +10,12 @@ export default class extends Controller {
   async filterArticles(event) {
     const searchTerm = event.target.value.toLowerCase();
   
-    // Clear the console.log timeout
-    clearTimeout(this.consoleLogTimeout);
-  
-    // Set a new timeout for console.log after 4 seconds or on pressing Enter
-    this.consoleLogTimeout = setTimeout(() => {
-      console.log("Search term:", searchTerm);
+    clearTimeout(this.queryTimeout);
 
-      // Call the method to post a new query
-      this.postNewQuery(searchTerm);
-    }, 2500);
+    this.queryTimeout = setTimeout(() => {
+      this.postNewQuery(event.target.value);
+    }, 2000);
 
-    // Filtering process without a delay
     this.titleTargets.forEach((title) => {
       const postTitle = title.textContent.toLowerCase();
       const postAuthor = title.nextElementSibling.textContent.toLowerCase();
@@ -33,7 +27,15 @@ export default class extends Controller {
         title.parentElement.style.display = "none";
       }
     });
-  }   
+  }
+
+  async postSearch(event) {
+    clearTimeout(this.queryTimeout);
+
+    this.queryTimeout = setTimeout(() => {
+      this.postNewQuery(event.target.value);
+    }, 300);
+  }
 
   async postNewQuery(searchTerm) {
     try {

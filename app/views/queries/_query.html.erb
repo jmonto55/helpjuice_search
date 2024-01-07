@@ -1,10 +1,15 @@
-<div id="<%= dom_id query %>">
-  <p>
+<div class="mt-1 flex w-full gap-6" id="<%= dom_id query %>">
+  <p class="text-white">
+    <strong>Created:</strong>
+    <%= query.created_at %>
+  </p>
+  
+  <p class="text-white">
     <strong>User ip:</strong>
     <%= query.user_ip %>
   </p>
 
-  <p>
+  <p class="text-white">
     <strong>Search:</strong>
     <%= query.search %>
   </p>

@@ -7,6 +7,7 @@ class QueriesController < ApplicationController
     @most_recent_search = Query.last
     @most_popular_search = Query.most_popular_search
     @most_frequent_user = Query.most_frequent_user
+    @quantity_of_queries = Article.count
   end
 
   # GET /queries/1 or /queries/1.json
@@ -24,19 +25,35 @@ class QueriesController < ApplicationController
 
   # POST /queries or /queries.json
   def create
-    @query = Query.new(query_params)
-    @query.user_ip = request.remote_ip
-
-    respond_to do |format|
-      if @query.save
-        format.html { redirect_to query_url(@query), notice: "Query was successfully created." }
-        format.json { render :show, status: :created, location: @query }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @query.errors, status: :unprocessable_entity }
+    # Find queries with the same search and user_ip created in the last minute
+    existing_query = Query.where(
+      user_ip: request.remote_ip
+    ).where("created_at >= ?", 15.second.ago).first
+  
+    if existing_query
+      # If a similar query exists, update the existing one with the new search
+      existing_query.update(search: query_params[:search])
+  
+      respond_to do |format|
+        format.html { redirect_to query_url(existing_query), notice: "Query was successfully updated." }
+        format.json { render :show, status: :ok, location: existing_query }
+      end
+    else
+      # Create a new query if a similar one doesn't exist
+      @query = Query.new(query_params)
+      @query.user_ip = request.remote_ip
+  
+      respond_to do |format|
+        if @query.save
+          format.html { redirect_to query_url(@query), notice: "Query was successfully created." }
+          format.json { render :show, status: :created, location: @query }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @query.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
+  end  
 
   # PATCH/PUT /queries/1 or /queries/1.json
   def update

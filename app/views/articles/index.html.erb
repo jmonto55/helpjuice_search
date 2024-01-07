@@ -1,12 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green" class="mb-4"><%= notice %></p>
 
 <%= link_to "Create article", new_article_path, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %>
 <%= link_to "Search stats", queries_path, class: "ml-8 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %>
 <div data-controller="search" id="articles" class="text-neutral-200 mt-8">
-  <input type="text" id="search" placeholder="Search..." data-action="input->search#filterArticles" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-  <table class="mt-6 border">
-    <thead class="border">
-      <tr class="border text-lg">
+  <input type="text" id="search" placeholder="Search..." data-action="input->search#filterArticles keydown->search#postSearch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+  <table class="mt-6 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-700 dark:text-gray-400">
+      <tr class=" text-lg">
         <th class="p-2">Title</th>
         <th class="p-2">Author</th>
         <th class="p-2">Content</th>
@@ -15,10 +15,10 @@
 
     <tbody>
       <% @articles.each do |article| %>
-        <tr class="border">
-          <td data-search-target="title" class="border p-4"><%= article.title %></td>
-          <td data-search-target="author" class="border p-4"><%= article.author %></td>
-          <td data-search-target="content" class="border p-4"><%= article.content %></td>
+        <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700">
+          <td data-search-target="title" class="p-4"><%= article.title %></td>
+          <td data-search-target="author" class="p-4"><%= article.author %></td>
+          <td data-search-target="content" class="p-4"><%= article.content %></td>
         </tr>
       <% end %>
     </tbody>

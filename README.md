@@ -42,7 +42,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[Live Demo](https://rails-uw4l.onrender.com/)
+[Live Demo](https://rails-38z4.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

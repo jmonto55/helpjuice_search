@@ -14,7 +14,7 @@ class QueriesController < ApplicationController
   end
 
   def create
-    existing_query = Query.where("created_at >= ?", 1.minute.ago).first
+    existing_query = Query.where("created_at >= ?", 15.second.ago).first
   
     if existing_query
       existing_query.update(search: query_params[:search])

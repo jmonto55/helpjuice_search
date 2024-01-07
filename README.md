@@ -1,8 +1,6 @@
 <div align="center">
-  
-  ![image](https://github.com/jmonto55/book-an-appointment-backend/assets/61404403/dd4d0fee-129d-4a04-b4c7-dff5bb004b32)
 
-  <h1><b>House Reservations</b></h1>
+  <h1><b>JavaScript Articles</b></h1>
   <!-- <img src="https://github.com/jmonto55/book-an-appointment-backend/assets/61404403/dd4d0fee-129d-4a04-b4c7-dff5bb004b32" alt="blog img" width="45%" />
   <img src="./app/assets/images/blog_2.png" alt="blog img" width="45%" /> -->
 </div>

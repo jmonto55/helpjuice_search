@@ -5,7 +5,7 @@ RSpec.describe "articles/show", type: :view do
     assign(:article, Article.create!(
       title: "MyText",
       author: "MyText",
-      content: "MyText"
+      content: "MyTextMyTextMyTextMyText"
     ))
   end
 

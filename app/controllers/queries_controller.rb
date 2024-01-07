@@ -25,13 +25,11 @@ class QueriesController < ApplicationController
 
   # POST /queries or /queries.json
   def create
-    # Find queries with the same search and user_ip created in the last minute
     existing_query = Query.where(
       user_ip: request.remote_ip
-    ).where("created_at >= ?", 15.second.ago).first
+    ).where("created_at >= ?", 20.second.ago).first
   
     if existing_query
-      # If a similar query exists, update the existing one with the new search
       existing_query.update(search: query_params[:search])
   
       respond_to do |format|
@@ -39,7 +37,6 @@ class QueriesController < ApplicationController
         format.json { render :show, status: :ok, location: existing_query }
       end
     else
-      # Create a new query if a similar one doesn't exist
       @query = Query.new(query_params)
       @query.user_ip = request.remote_ip
   

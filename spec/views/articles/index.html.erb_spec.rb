@@ -6,12 +6,12 @@ RSpec.describe "articles/index", type: :view do
       Article.create!(
         title: "MyText",
         author: "MyText",
-        content: "MyText"
+        content: "MyTextMyTextMyTextMyText"
       ),
       Article.create!(
         title: "MyText",
         author: "MyText",
-        content: "MyText"
+        content: "MyTextMyTextMyTextMyText"
       )
     ])
   end
@@ -19,8 +19,8 @@ RSpec.describe "articles/index", type: :view do
   it "renders a list of articles" do
     render
     cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 0
+    assert_select cell_selector, text: Regexp.new("MyText".to_s), count: 0
   end
 end

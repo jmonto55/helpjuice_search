@@ -58,6 +58,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 # rswag for documentation
@@ -78,9 +79,12 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'faker'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
 gem 'rubocop'
+
+gem "tailwindcss-rails", "~> 2.2"

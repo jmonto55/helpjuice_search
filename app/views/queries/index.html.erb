@@ -1,0 +1,27 @@
+<h1 class="text-white text-2xl mt-8">Search Stats</h1>
+<div class="flex w-full flex-wrap mt-4">
+  <% if @most_recent_search %>
+    <p class="w-[350px] text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-neutral-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Most Recent Search: <%= @most_recent_search.search %></p>
+  <% end %>
+  <% if @most_popular_search %>
+    <p class="w-[350px] text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-neutral-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Most Popular Search: <%= @most_popular_search %></p>
+  <% end %>
+  <% if @most_frequent_user %>
+    <p class="w-[350px] text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-neutral-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"">Most Frequent User: <%= @most_frequent_user %></p>
+  <% end %>
+  <% if @quantity_of_queries %>
+    <p class="w-[350px] text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-neutral-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Articles created: <%= @quantity_of_queries %></p>
+  <% end %>
+</div>
+
+<h2 class="text-white text-2xl mt-4">Queries History</h2>
+<p class="text-neutral-200 text-sm italic">(Recent queries)</p>
+<div id="queries" class="overflow-auto max-h-[300px] mt-2 flex flex-col custom-scrollbar">
+  <% @queries.each do |query| %>
+    <%= render query %>
+  <% end %>
+</div>
+
+<div class="mt-6">
+  <%= link_to "Back to articles", articles_path, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %>
+</div>

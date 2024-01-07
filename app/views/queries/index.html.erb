@@ -16,6 +16,7 @@
 </div>
 
 <h2 class="text-white text-2xl mt-4">Queries History</h2>
+<p class="text-neutral-200 text-sm italic">(Recent queries)</p>
 <div id="queries" class="overflow-auto max-h-[300px] mt-2 flex flex-col custom-scrollbar">
   <% @queries.each do |query| %>
     <%= render query %>

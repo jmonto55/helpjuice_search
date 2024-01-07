@@ -1,7 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Queries</h1>
+<% if @most_recent_search %>
+  <p style="color: green">Most Recent Search: <%= @most_recent_search.search %></p>
+<% end %>
+<% if @most_popular_search %>
+  <p style="color: blue">Most Popular Search: <%= @most_popular_search %></p>
+<% end %>
+<% if @most_frequent_user %>
+  <p style="color: red">Most Frequent User: <%= @most_frequent_user %></p>
+<% end %>
 
+<h1>Queries History</h1>
 <div id="queries">
   <% @queries.each do |query| %>
     <%= render query %>
@@ -11,4 +20,6 @@
   <% end %>
 </div>
 
-<%= link_to "New query", new_query_path %>
+<div>
+  <%= link_to "Back to articles", articles_path, class: "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" %>
+</div>

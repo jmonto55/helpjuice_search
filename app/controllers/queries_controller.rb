@@ -4,6 +4,9 @@ class QueriesController < ApplicationController
   # GET /queries or /queries.json
   def index
     @queries = Query.all
+    @most_recent_search = Query.last
+    @most_popular_search = Query.most_popular_search
+    @most_frequent_user = Query.most_frequent_user
   end
 
   # GET /queries/1 or /queries/1.json

@@ -14,9 +14,7 @@ class QueriesController < ApplicationController
   end
 
   def create
-    existing_query = Query.where(
-      user_ip: request.remote_ip
-    ).where("created_at >= ?", 1.minute.ago).first
+    existing_query = Query.where("created_at >= ?", 1.minute.ago).first
   
     if existing_query
       existing_query.update(search: query_params[:search])
@@ -39,7 +37,7 @@ class QueriesController < ApplicationController
         end
       end
     end
-  end  
+  end
 
   def update
     respond_to do |format|

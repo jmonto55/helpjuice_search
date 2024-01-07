@@ -7,20 +7,21 @@
   <table class="mt-6 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-700 dark:text-gray-400">
       <tr class=" text-lg">
-        <th class="p-2">Title</th>
-        <th class="p-2">Author</th>
-        <th class="p-2">Content</th>
+        <th class="p-2 sm:w-1/4 lg:w-1/6">Title</th>
+        <th class="p-2 sm:w-1/4 lg:w-1/6">Author</th>
+        <th class="p-2 hidden md:table-cell">Content</th>
       </tr>
     </thead>
 
     <tbody>
       <% @articles.each do |article| %>
         <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700">
-          <td data-search-target="title" class="p-4"><%= article.title %></td>
-          <td data-search-target="author" class="p-4"><%= article.author %></td>
-          <td data-search-target="content" class="p-4"><%= article.content %></td>
+          <td data-search-target="title" class="p-4 sm:w-1/4 lg:w-1/6"><%= article.title %></td>
+          <td data-search-target="author" class="p-4 sm:w-1/4 lg:w-1/6"><%= article.author %></td>
+          <td data-search-target="content" class="p-4 hidden md:table-cell"><%= article.content %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
 </div>
